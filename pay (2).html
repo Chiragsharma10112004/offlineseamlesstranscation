@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  
+
+    <link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+
+    <meta name="apple-mobile-web-app-title" content="CodePen">
+
+    <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+
+    <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111" />
+
+
+
+  
+  <title>Scan the QR code</title>
+  
+  
+  
+  
+<style>
+h1 {
+  text-align: center;
+  
+}
+body{
+    background-color: blueviolet;
+}
+.bg{
+    background: local;
+    background-color: black;
+    padding: 10px;
+    color:white
+}
+
+#reader {
+  width: 500px;
+  border: 30px solid grey;
+  border-radius: 15px;
+  
+}
+h4{
+    border:30px solid grey;
+    border-radius: 20px;
+    background-color: grey;
+    color: white;
+    outline:auto;
+}
+
+
+.result {
+  border:10px solid grey;
+  border-radius:  8px;
+  background-color: green;
+  color: #fff;
+  padding: 20px;
+  
+}
+#result{
+    color: #fff;
+    align-items:center;
+    /* border:2px solid white; */
+    border-radius: 30px;
+    height: 10%;
+}
+
+.row {
+  display: flex;
+}
+
+#reader__scan_region {
+  /* background:grey; */
+  background: transparent;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+    <div class="bg">
+        <h1>SCAN HERE</h1>
+
+    </div>
+
+<!-- QR SCANNER CODE BELOW  -->
+<div class="row">
+  <div class="col">
+    <div id="reader"></div>
+  </div>
+  <div class="col" style="padding: 30px">
+    <h4>Scan Result </h4>
+    <div id="result">
+        <p>Result goes here<p>
+    </div>
+  </div>
+
+</div>
+    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.2.0/html5-qrcode.min.js'></script>
+      <script id="rendered-js" >
+// When scan is successful fucntion will produce data
+function onScanSuccess(qrCodeMessage) {
+  document.getElementById("result").innerHTML =
+  '<span class="result">' + qrCodeMessage + "</span>";
+}
+
+// When scan is unsuccessful fucntion will produce error message
+function onScanError(errorMessage) {
+  // Handle Scan Error
+}
+
+// Setting up Qr Scanner properties
+var html5QrCodeScanner = new Html5QrcodeScanner("reader", {
+  fps: 10,
+  qrbox: 250 });
+
+
+// in
+html5QrCodeScanner.render(onScanSuccess, onScanError);
+//# sourceURL=pen.js
+    </script>
+
+  
+</body>
+
+</html>
